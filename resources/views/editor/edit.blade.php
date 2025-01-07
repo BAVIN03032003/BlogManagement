@@ -15,28 +15,38 @@
 <?php 
 //dd($posts->content);
 ?>
-
+@if (session('success'))
+        <div id="success-message" class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
 <div class="card" style="width: 85rem; margin-left:100px;">
     <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
     <div class="card-body">
         <!-- <h5 class="card-title">{{ __('CREATE BLOGS') }}</h5> -->
-        <form action="{{ route('editor.update') }}" method="POST">
+        <form action="{{ route('editor.update',['id'=>$posts->id]) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-3 mt-3">
                 <label for="title" class="form-label">TITLE:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter title" value="{{$posts->title}}" name="title">
+                <input type="text" class="form-control" id="title" placeholder="Enter title" value="{{ old('title',$posts->title) }}" name="title">
             </div>
             <div class="mb-3 mt-3">
                 <label for="author" class="form-label">Author:</label>
-                <input type="text" class="form-control" id="author" placeholder="Enter author name" value="{{$posts->author}}" name="author">
+                <input type="text" class="form-control" id="author" placeholder="Enter author name" value="{{ old('author',$posts->author) }}" name="author">
+            </div>
+            <div class="mb-4 mt-3">
+                <label for="note" class="form-label"><b>Short Description:</b></label>
+                <input type="text" class="form-control" id="note" placeholder="" name="short_description" value="{{ old('short_description',$posts->short_description) }}">
             </div>
             <div class="mb-3 mt-3">
                 <label for="content" class="form-label">CONTENT:</label>
-                <textarea class="form-control summernote" id="content" name="content">{{$posts->content}}</textarea>
+                <textarea class="form-control summernote" id="content" name="content">{{ old('content',$posts->content) }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+    
 </div>
 
 
@@ -63,5 +73,12 @@
             ]
         });
     });
+
+    if (session('success'))
+        // Delay and fade out the success message after 1 second
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 1000);  // 1000 ms = 1 second
+    
 </script>
 @endsection

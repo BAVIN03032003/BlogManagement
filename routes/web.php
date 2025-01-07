@@ -27,7 +27,8 @@ Route::get('/create',[EditorController::class,'create'])->name('editor.create');
 Route::get('/edit/{id}',[EditorController::class,'edit'])->name('editor.edit');
 Route::post('/store',[EditorController::class,'store'])->name('editor.store');
 Route::get('/list',[EditorController::class,'list'])->name('editor.list');
-Route::post('/update',[EditorController::class,'update'])->name('editor.update');
+Route::put('/update/{id}',[EditorController::class,'update'])->name('editor.update');
+Route::get('/preview',[EditorController::class,'preview'])->name('editor.preview');
 
 
 Route::get('/dashboard', function () {

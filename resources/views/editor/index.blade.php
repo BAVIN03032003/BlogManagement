@@ -16,7 +16,7 @@
                 </li>
                
                 <li class="nav-item">
-                    <a href="" class="nav-link text-white">
+                    <a href="{{ route('editor.preview') }}" class="nav-link text-white">
                         <i class="bi bi-gear-fill"></i> Preview
                     </a>
                 </li>

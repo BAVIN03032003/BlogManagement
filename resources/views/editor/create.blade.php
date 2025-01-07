@@ -32,6 +32,10 @@
                 <input type="file" class="form-control" id="image" placeholder="" name="thumbnail">
             </div>
             <div class="mb-4 mt-3">
+                <label for="note" class="form-label"><b>Short Description:</b></label>
+                <input type="text" class="form-control" id="note" placeholder="" name="short_description">
+            </div>
+            <div class="mb-4 mt-3">
                 <label for="content" class="form-label"><b>CONTENT:</b></label>
                 <textarea class="form-control summernote" id="content" placeholder="Write here" type="text" name="content"></textarea>
             </div>
